@@ -1,0 +1,1 @@
+# bot-proof-storage
