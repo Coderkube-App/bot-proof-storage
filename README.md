@@ -2,6 +2,12 @@
 
 High-security browser storage library with built-in behavioral bot detection and encrypted client-side persistence.
 
+## 🎬 Demo
+
+<p align="center">
+  <img src="./assets/cli_demo.svg" alt="Bot-Proof Storage Demo" width="100%" style="max-width: 860px;" />
+</p>
+
 ---
 
 ## Overview
