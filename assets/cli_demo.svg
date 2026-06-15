@@ -23,11 +23,6 @@
         0% { stroke-dashoffset: 240; }
         40%, 100% { stroke-dashoffset: 0; }
       }
-      @keyframes curvyDot {
-        0% { motion-offset: 0%; opacity: 1; }
-        40% { motion-offset: 100%; opacity: 1; }
-        45%, 100% { motion-offset: 100%; opacity: 0; }
-      }
       .curvy-line { stroke-dasharray: 6,4; animation: curvyPath 4.8s linear infinite; }
       
       /* Straight Bot Cursor Translation (much faster, linear) */
@@ -58,25 +53,21 @@
       .green-flash { animation: pulseGreen 2.5s ease-in-out infinite; }
 
       /* Typewriter CLI commands */
-      @clipPath id="clip-cmd1" {
-        0%, 5% { width: 0; }
-        20%, 100% { width: 280px; }
-      }
-      @keyframes type1 { 0%, 5% { width: 0; } 18%, 100% { width: 245px; } }
-      @keyframes type2 { 0%, 40% { width: 0; } 58%, 100% { width: 250px; } }
+      @keyframes type1 { 0%, 5% { width: 0; } 18%, 100% { width: 175px; } }
+      @keyframes type2 { 0%, 40% { width: 0; } 58%, 100% { width: 130px; } }
       .cmd1 { animation: type1 12s linear infinite; }
       .cmd2 { animation: type2 12s linear infinite; }
 
       @keyframes cursor1Move {
         0%, 5% { transform: translateX(0); opacity: 1; }
-        18% { transform: translateX(245px); opacity: 1; }
-        22%, 100% { transform: translateX(245px); opacity: 0; }
+        18% { transform: translateX(175px); opacity: 1; }
+        22%, 100% { transform: translateX(175px); opacity: 0; }
       }
       @keyframes cursor2Move {
         0%, 40% { transform: translateX(0); opacity: 0; }
         41% { transform: translateX(0); opacity: 1; }
-        58% { transform: translateX(250px); opacity: 1; }
-        63%, 100% { transform: translateX(250px); opacity: 0; }
+        58% { transform: translateX(130px); opacity: 1; }
+        63%, 100% { transform: translateX(130px); opacity: 0; }
       }
       .cur1 { animation: cursor1Move 12s linear infinite, blink 1s step-end infinite; }
       .cur2 { animation: cursor2Move 12s linear infinite, blink 1s step-end infinite; }
@@ -119,8 +110,8 @@
     </radialGradient>
 
     <!-- Clips for typewriter -->
-    <clipPath id="clip-c1"><rect class="cmd1" x="20" y="8" width="0" height="20" /></clipPath>
-    <clipPath id="clip-c2"><rect class="cmd2" x="20" y="112" width="0" height="20" /></clipPath>
+    <clipPath id="clip-c1"><rect class="cmd1" x="16" y="-8" width="0" height="20" /></clipPath>
+    <clipPath id="clip-c2"><rect class="cmd2" x="16" y="36" width="0" height="20" /></clipPath>
   </defs>
 
   <!-- Canvas Background -->
@@ -214,11 +205,9 @@
     <g class="human-only" transform="translate(16, 44)">
       <text class="fs" y="12" fill="#10b981" font-size="10.5" font-weight="700">🔒 Vault: Active</text>
       <g transform="translate(0, 32)">
-        <text class="fm" font-size="10" fill="#71717a">{</text>
-        <text class="fm" y="16" font-size="10" fill="#a5b4fc">  "token": "aes-256:8f3c..."</text>
-        <text class="fm" y="32" font-size="10" fill="#a5b4fc">  "user": "session_admin"</text>
-        <text class="fm" y="48" font-size="10" fill="#a5b4fc">  "role": "authorized"</text>
-        <text class="fm" y="64" font-size="10" fill="#71717a">}</text>
+        <text class="fm" font-size="9.5" fill="#71717a">{"token": "aes-256:8f3c..."}</text>
+        <text class="fm" y="16" font-size="9.5" fill="#a5b4fc">"user": "session_admin"</text>
+        <text class="fm" y="32" font-size="9.5" fill="#a5b4fc">"role": "authorized"</text>
       </g>
       <rect y="138" width="198" height="34" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.2)" />
       <text class="fs" x="99" y="158" fill="#10b981" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.5">SECURELY ENCRYPTED</text>
@@ -228,10 +217,9 @@
     <g class="bot-only" transform="translate(16, 44)">
       <text class="fs" y="12" fill="#ef4444" font-size="10.5" font-weight="700">☠ Vault: WIPED</text>
       <g transform="translate(0, 32)">
-        <text class="fm" font-size="10" fill="#ef4444">{}</text>
+        <text class="fm" font-size="9.5" fill="#ef4444">{}</text>
         <text class="fm" y="22" font-size="9.5" fill="#ef4444" font-weight="700">/* STORAGE WIPE TRIGGERED */</text>
         <text class="fm" y="40" font-size="9" fill="#71717a">// All sessions purged</text>
-        <text class="fm" y="54" font-size="9" fill="#71717a">// Encryption keys destroyed</text>
       </g>
       <rect y="138" width="198" height="34" rx="6" fill="rgba(239, 68, 68, 0.08)" stroke="rgba(239, 68, 68, 0.2)" />
       <text class="fs" x="99" y="158" fill="#ef4444" font-size="9" font-weight="700" text-anchor="middle" letter-spacing="0.5">AUTO DEFENSE CLEARED</text>
@@ -252,34 +240,34 @@
     <!-- Terminal Output -->
     <g transform="translate(20, 32)">
       <!-- Line 1: npm install command -->
-      <text class="fm" y="4" font-size="10.5" fill="#58a6ff" font-weight="700">❯</text>
-      <text class="fm" x="16" y="4" font-size="10.5" fill="#c9d1d9" clip-path="url(#clip-c1)">npm install bot-proof-storage</text>
-      <rect class="cur1" x="16" y="-6" width="7" height="13" fill="#58a6ff" />
+      <text class="fm" y="4" font-size="9.5" fill="#58a6ff" font-weight="700">❯</text>
+      <text class="fm" x="16" y="4" font-size="9.5" fill="#c9d1d9" clip-path="url(#clip-c1)">npm install bot-proof-storage</text>
+      <rect class="cur1" x="16" y="-7" width="6" height="12" fill="#58a6ff" />
 
       <!-- Success log after installation -->
       <g class="log1">
-        <text class="fm" x="16" y="26" fill="#57ab5a">✔ Installed bot-proof-storage@1.0.1 (AES-256 Encrypted &amp; SSR-Safe)</text>
+        <text class="fm" x="16" y="26" font-size="9.5" fill="#57ab5a">✔ Installed bot-proof-storage@1.0.1 (AES-256 Encrypted &amp; SSR-Safe)</text>
       </g>
 
       <!-- Line 2: executing bot test script -->
       <g class="log2">
-        <text class="fm" y="48" font-size="10.5" fill="#58a6ff" font-weight="700">❯</text>
-        <text class="fm" x="16" y="48" font-size="10.5" fill="#c9d1d9" clip-path="url(#clip-c2)">node test-bot-wipe.js</text>
-        <rect class="cur2" x="16" y="37" width="7" height="13" fill="#58a6ff" />
+        <text class="fm" y="48" font-size="9.5" fill="#58a6ff" font-weight="700">❯</text>
+        <text class="fm" x="16" y="48" font-size="9.5" fill="#c9d1d9" clip-path="url(#clip-c2)">node test-bot-wipe.js</text>
+        <rect class="cur2" x="16" y="37" width="6" height="12" fill="#58a6ff" />
       </g>
 
       <!-- Execution logs -->
       <g class="log3" transform="translate(16, 72)">
-        <text class="fm" fill="#8b949e">[Bot-Proof Storage] Initialized. Monitoring behavioral vectors...</text>
+        <text class="fm" font-size="9.5" fill="#8b949e">[Bot-Proof Storage] Initialized. Monitoring behavioral vectors...</text>
       </g>
       <g class="log4" transform="translate(16, 92)">
-        <text class="fm" fill="#10b981">✔ Interaction: Human pattern verified. Data decrypted.</text>
+        <text class="fm" font-size="9.5" fill="#10b981">✔ Interaction: Human pattern verified. Data decrypted.</text>
       </g>
       <g class="log5" transform="translate(16, 114)">
-        <text class="fm" fill="#ef4444">☠ ALERT: Linear mouse movement detected. Velocity: 140px/ms (Inhuman)</text>
+        <text class="fm" font-size="9.5" fill="#ef4444">☠ ALERT: Linear mouse movement detected. Velocity: 140px/ms (Inhuman)</text>
       </g>
       <g class="log6" transform="translate(16, 134)">
-        <text class="fm" fill="#f43f5e" font-weight="700">WIPE TRIGGERED: Sensitive client-side storage has been purged safely.</text>
+        <text class="fm" font-size="9.5" fill="#f43f5e" font-weight="700">WIPE TRIGGERED: Sensitive client-side storage has been purged safely.</text>
       </g>
     </g>
   </g>
